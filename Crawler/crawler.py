@@ -1,6 +1,7 @@
 import requests
 import argparse
 import socket
+import json
 
 def get_ips_for_host(host):
         try:
@@ -13,7 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('url', type=str)
 parser.add_argument('-u', help='Display URL source code', action='store_true')
 parser.add_argument('-i', help='Display URL IP Adress', action='store_true')
-
+parser.add_argument('--header', help='Display URL Header',action='store_true')
 
 args = parser.parse_args()
 
@@ -28,5 +29,10 @@ if(args.i):
     url = args.url.replace('https://','')
     ips = get_ips_for_host(url)
     print(repr(ips))
+if(args.header):
+    response = requests.get(args.url)
+    print(response)
+    for i in response.headers:
+        print(i,":",response.headers[i])
 
 
