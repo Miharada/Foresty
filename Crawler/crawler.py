@@ -30,6 +30,7 @@ print(args.url)
 
 if(args.o):
      f = open(args.o, "w+")
+     
 if(args.u):
     response = requests.get(args.url)
     page_source = response.text
@@ -45,6 +46,7 @@ if(args.i):
     print(repr(ips))
     if(args.o):
         writeout(repr(ips))
+        
 if(args.header):
     if(not(args.u)):
         response = requests.get(args.url)
