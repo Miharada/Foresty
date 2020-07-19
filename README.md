@@ -11,23 +11,23 @@ Features :
 5. Port Scan
 
 
-Use
+<p>Use</p><br>
 
-Window :
+<p>Window :</p><br>
 
-py iGet.py https://hackthissite.org-u -i
+<p>py iGet.py https://hackthissite.org-u -i</p><br>
 
-py iGet.py https://hackthissite.org --header -o file.txt
-
-
-Linux :
-
-python3 iGet.py https://hackthissite.org -u  -i
-
-python3 iGet.py https://hackthissite.org --header -o file.txt
+<p>py iGet.py https://hackthissite.org --header -o file.txt</p><br>
 
 
-Flag Description :
+<p>Linux :</p><br>
+
+<p>python3 iGet.py https://hackthissite.org -u  -i</p><br>
+
+<p>python3 iGet.py https://hackthissite.org --header -o file.txt</p><br>
+
+
+<p>Flag Description :</p><br>
 
 -u : Show URL source code 
 
