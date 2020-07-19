@@ -64,10 +64,12 @@ if(args.header):
             writeout(texts = i+":"+response.headers[i])
 
 if(args.ps):
+   
     ips = socket.gethostbyname(httpremover(args.url))
     scanner = nmap.PortScanner()
     for port in range(100):
-        print("a")
         res = scanner.scan(ips,str(port))
         res = res['scan'][ips]['tcp'][port]['state']
         print(f'port {port} is {res}.')
+
+#https://stackoverflow.com/questions/52170913/python-nmap-scanner-progress
