@@ -31,5 +31,5 @@ Flag Description :
 --header : Show URL header information
 
 -o <filename> : Write Output to file
-  
- --ps : Port Scanner
+
+--ps : Port Scanner
