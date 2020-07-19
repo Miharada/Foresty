@@ -15,11 +15,13 @@ Use
 Window :
 
 py iGet.py https://hackthissite.org-u -i
+
 py iGet.py https://hackthissite.org --header -o file.txt
 
 Linux :
 
 python3 iGet.py https://hackthissite.org -u  -i
+
 python3 iGet.py https://hackthissite.org --header -o file.txt
 
 Flag Description :
