@@ -1,6 +1,5 @@
-UPDATE!!
-<br>
-Release (3.0) 19/07/2020
+<p>UPDATE!!</p><br>
+<p>Release (3.0) 19/07/2020</p><br><br>
 
 
 Networking Tools By Miharada
@@ -34,10 +33,7 @@ python3 iGet.py https://hackthissite.org -u  -i
 
 python3 iGet.py https://hackthissite.org --header -o file.txt
 
-
-
 Flag Description :
-<br><br><br><br>
 -u : Show URL source code 
 
 -i : Show URL IP Addresses
