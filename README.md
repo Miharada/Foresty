@@ -1,6 +1,5 @@
 UPDATE!!
-
-
+<br>
 Release (3.0) 19/07/2020
 
 
@@ -38,9 +37,7 @@ python3 iGet.py https://hackthissite.org --header -o file.txt
 
 
 Flag Description :
-
-
-
+<br><br>
 -u : Show URL source code 
 
 -i : Show URL IP Addresses
