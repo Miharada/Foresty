@@ -21,16 +21,29 @@ def httpremover(url):
     url = args.url.replace('http://','')
     url = args.url.replace('https://','')
     return url
+    
+def httpadder(url):
+    if(url.find('https://') < 0 and url.find('http://') < 0):
+        url = 'http://' + url
+        print(url)
+    return url
 
 def toDict(text):
-    s = text.split(":")
-    txtjson = "{"
-    for i in range(int(len(s)/2)):
-        txtjson = txtjson + "\""+ s[i] + "\"" + ":" + "\"" + s[i+1] + "\""
-    txtjson = txtjson + "}"
-
-    res = json.loads(txtjson)
-    return (res)
+    if(text):
+        text = text.replace('&',':')
+        s = text.split(":")
+        txtjson = "{"
+        i=0
+        for j in range(int(len(s)/2)):
+            txtjson = txtjson + "\""+ s[i] + "\"" + ":" + "\"" + s[i+1] + "\""
+            if(int(len(s)/2)>0):
+                txtjson = txtjson + ","
+            i+=2
+        txtjson = txtjson + "}"
+        txtjson = txtjson[:len(txtjson)-2] + "}"
+        res = json.loads(txtjson)
+        return (res)
+    return text
 
 parser = argparse.ArgumentParser()
 parser.add_argument('url', type=str)
@@ -40,20 +53,24 @@ parser.add_argument('--header', help='Display URL Header',action='store_true')
 parser.add_argument('-o', help='Store output to txt file',type=str)
 parser.add_argument('--ps',help='Port Scan',action='store_true')
 parser.add_argument('-H',help='<header/@file> Pass custom header(s) to server', type=str)
+parser.add_argument('--data',help='<data> HTTPS POST data', type=str)
 
 args = parser.parse_args()
 
 response = ""
 
-print(args.url)
 
+args.url = httpadder(args.url)
+
+print(args.url)
 if(args.o):
      f = open(args.o, "w+")
      
 if(args.u):
-    if(args.H):
+    if(args.H or args.data):
         args.H = toDict(args.H)
-        response = requests.post(args.url, headers = args.H)
+        args.data = toDict(args.data)
+        response = requests.post(args.url, headers = args.H, data=args.data)
     else:
         response = requests.get(args.url)
     page_source = response.text
