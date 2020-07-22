@@ -1,0 +1,23 @@
+Release 3.0 (19/07/2020)
+
+Features :
++ Add NMAP port scan
+
+Fixed Bug :
+- NULL
+
+Problem :
++ Slow Port Scanning
+
+
+Release 3.1 (22/07/2020)
+
+Features : 
++ You can now pass custom headers to server
+- Remove NMAP (Temporary), Because it's illegal i still don't know how to become anonymous
+
+Fixed Bug
+- NULL
+
+Problem
+- NULL
