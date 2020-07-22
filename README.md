@@ -1,6 +1,3 @@
-<p>UPDATE!!</p>
-<p>Release (3.0) 19/07/2020</p><br>
-
 Networking Tools By Miharada
 
 Features :
@@ -8,7 +5,7 @@ Features :
 2. Show URL IP Adresses
 3. Show URL header information
 4. Write output to file
-5. Port Scan
+5. Send custom headers to server
 
 
 <p>Use</p><br>
@@ -38,3 +35,5 @@ Features :
 -o <filename> : Write Output to file
 
 --ps : Port Scanner
+
+-H : Send Custom Header to Server
