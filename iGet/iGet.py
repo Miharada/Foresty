@@ -1,7 +1,8 @@
 import requests
 import argparse
 import socket
-import nmap
+import json
+#import nmap
 
 def get_ips_for_host(host):
         try:
@@ -16,11 +17,20 @@ def writeout(texts):
     f.close()
 
 
-
 def httpremover(url):
     url = args.url.replace('http://','')
     url = args.url.replace('https://','')
     return url
+
+def toDict(text):
+    s = text.split(":")
+    txtjson = "{"
+    for i in range(int(len(s)/2)):
+        txtjson = txtjson + "\""+ s[i] + "\"" + ":" + "\"" + s[i+1] + "\""
+    txtjson = txtjson + "}"
+
+    res = json.loads(txtjson)
+    return (res)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('url', type=str)
@@ -29,6 +39,7 @@ parser.add_argument('-i', help='Display URL IP Adress', action='store_true')
 parser.add_argument('--header', help='Display URL Header',action='store_true')
 parser.add_argument('-o', help='Store output to txt file',type=str)
 parser.add_argument('--ps',help='Port Scan',action='store_true')
+parser.add_argument('-H',help='<header/@file> Pass custom header(s) to server', type=str)
 
 args = parser.parse_args()
 
@@ -40,7 +51,11 @@ if(args.o):
      f = open(args.o, "w+")
      
 if(args.u):
-    response = requests.get(args.url)
+    if(args.H):
+        args.H = toDict(args.H)
+        response = requests.post(args.url, headers = args.H)
+    else:
+        response = requests.get(args.url)
     page_source = response.text
     print("\nURL:", args.url)
     print(page_source+"\n")
@@ -63,13 +78,13 @@ if(args.header):
         if(args.o):
             writeout(texts = i+":"+response.headers[i])
 
-if(args.ps):
+# if(args.ps):
    
-    ips = socket.gethostbyname(httpremover(args.url))
-    scanner = nmap.PortScanner()
-    for port in range(100):
-        res = scanner.scan(ips,str(port))
-        res = res['scan'][ips]['tcp'][port]['state']
-        print(f'port {port} is {res}.')
+#     ips = socket.gethostbyname(httpremover(args.url))
+#     scanner = nmap.PortScanner()
+#     for port in range(100):
+#         res = scanner.scan(ips,str(port))
+#         res = res['scan'][ips]['tcp'][port]['state']
+#         print(f'port {port} is {res}.')
 
 #https://stackoverflow.com/questions/52170913/python-nmap-scanner-progress
