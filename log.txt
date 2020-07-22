@@ -14,6 +14,8 @@ Release 3.1 (22/07/2020)
 
 Features : 
 + You can now pass custom headers to server
++ Now you can type URL without http or https
++ Add HTTPS POST data
 - Remove NMAP (Temporary), Because it's illegal i still don't know how to become anonymous
 
 Fixed Bug
